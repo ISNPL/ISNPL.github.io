@@ -1,0 +1,13 @@
+{
+  "_comment": "연구실 일정(캘린더). 이 파일만 고치고 `node tools/build.js` 를 실행하면 /calendar/ 페이지에 반영됩니다. 한 줄에 일정 하나. 필드 설명: date=시작일 'YYYY-MM-DD'(필수) / end=여러 날 일정의 마지막 날 'YYYY-MM-DD'(선택) / time=시작 시각 'HH:MM'(선택, 없으면 종일) / title=제목(필수) / location=장소(선택) / url=관련 링크(선택) / description=메모(선택; 일정을 클릭하면 뜨는 팝업에 표시, 줄바꿈은 \n) / type= seminar|meeting|deadline|holiday|event 중 하나(색상 구분). 날짜 순서는 상관없습니다(자동 정렬).",
+  "events": [
+    { "date": "2026-07-02", "time": "16:00", "title": "Lab Seminar: Zero-Knowledge Proofs 입문", "location": "AI관 401호", "type": "seminar", "description": "발표: 김주현\n주제: zk-SNARK 기본 개념과 응용 사례 리뷰.\n사전 읽을거리는 단톡방 참고." },
+    { "date": "2026-07-06", "time": "10:00", "title": "주간 연구 미팅", "location": "ISNP Lab", "type": "meeting" },
+    { "date": "2026-07-10", "title": "논문 마감: IEEE TIFS", "type": "deadline" },
+    { "date": "2026-07-13", "time": "10:00", "title": "주간 연구 미팅", "location": "ISNP Lab", "type": "meeting" },
+    { "date": "2026-07-16", "time": "16:00", "title": "Lab Seminar: Post-Quantum Cryptography", "location": "AI관 401호", "type": "seminar" },
+    { "date": "2026-07-20", "end": "2026-07-22", "title": "Summer Research Workshop", "location": "가천대학교", "url": "https://www.gachon.ac.kr", "type": "event", "description": "3일간 진행되는 하계 연구 워크숍.\n참가 신청 및 일정표: https://www.gachon.ac.kr" },
+    { "date": "2026-08-15", "title": "광복절 (휴무)", "type": "holiday" },
+    { "date": "2026-08-31", "title": "논문 마감: ASIA CCS 2027 (1차)", "type": "deadline" }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "_comment": "News + members + teaching. Edit this file then run `node tools/build.js`. Homepage shows the most recent items (news 8, members current, teaching = latest year only); full lists on the All-news / All-members / All-teaching pages. News: newest first. 'highlight':true shows the item in blue. Teaching: one entry per term {year, term, courses[]}, newest first.",
+  "news": [
+    { "date": "Jan 2026", "highlight": true, "html": "Two papers accepted to <a href=\"https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=30\" target=\"_blank\" rel=\"noopener\">IEEE Transactions on Consumer Electronics</a> on decentralized privacy-preserving schemes for medical IoT and agricultural consumer electronics." },
+    { "date": "Nov 2025", "highlight": false, "html": "Paper on 6G space-terrestrial handover authentication accepted to <a href=\"https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=10206\" target=\"_blank\" rel=\"noopener\">IEEE Transactions on Information Forensics and Security</a> (TIFS)." },
+    { "date": "2025", "highlight": false, "html": "Selected as a Technical Program Committee member for <a href=\"https://icc2026.ieee-icc.org\" target=\"_blank\" rel=\"noopener\">IEEE ICC 2026</a> and a Program Committee member for <a href=\"https://secdev.ieee.org\" target=\"_blank\" rel=\"noopener\">IEEE SecDev</a> (2024&ndash;2026)." },
+    { "date": "2024", "highlight": false, "html": "The Information Security &amp; Privacy (ISNP) Lab was established at Gachon University. We are recruiting motivated graduate / undergraduate students and postdocs &mdash; please <a href=\"/#contact\">contact</a> with your CV." }
+  ],
+  "members": {
+    "current": [
+      { "name": "Joohyun Kim", "role": "Research Intern", "topic": "Blockchain, Cryptographic Protocol" },
+      { "name": "Dongyeon Yoo", "role": "Research Intern", "topic": "AI Security" },
+      { "name": "Kyubin Park", "role": "Research Intern", "topic": "Post-Quantum Cryptography, Applied Cryptography" }
+    ],
+    "alumni": []
+  },
+  "teaching": [
+    { "year": 2026, "term": "Spring", "courses": ["Cryptographic Protocols", "Introduction to Artificial Intelligence", "Programming for Artificial Intelligence"] },
+    { "year": 2025, "term": "Fall", "courses": ["Blockchain", "Data Processing Programming", "AI & Data Sciences"] },
+    { "year": 2025, "term": "Spring", "courses": ["Introduction to Artificial Intelligence", "Programming for Artificial Intelligence", "Financial Security"] },
+    { "year": 2024, "term": "Fall", "courses": ["Blockchain", "Data Processing Programming", "Basics of AI Programming"] },
+    { "year": 2024, "term": "Spring", "courses": ["Introduction to Artificial Intelligence", "Programming for Artificial Intelligence"] }
+  ]
+}

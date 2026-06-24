@@ -1,0 +1,9 @@
+{
+  "_comment": "구글 캘린더 자동 연동 설정. googleCalendarId 와 googleApiKey 두 값을 채우면 /calendar/ 페이지가 구글 캘린더에서 일정을 실시간으로 가져옵니다(커밋·빌드 없이 자동 반영). 두 값이 비어 있으면 tools/events.json 의 수동 일정을 사용합니다. 발급/설정 방법은 사용설명서.md §3-9 참고. timeZone 은 시간 표시 기준(기본 한국). monthsBack 은 과거 몇 개월치까지 가져올지.",
+  "_security": "이 파일은 공개 저장소에 올라가 누구나 볼 수 있습니다. googleApiKey 는 반드시 Google Cloud Console 에서 제한해서 발급하세요: ① 애플리케이션 제한 = HTTP 리퍼러 'https://kisung-park.github.io/*' ② API 제한 = Google Calendar API 만. (캘린더는 public, Calendar API 는 무료라 제한만 걸면 노출돼도 안전합니다.)",
+  "googleCalendarId": "bb58d4330d244d7ad1a3f719630df0dc62059bda40039bea086f6fef2373a1a6@group.calendar.google.com",
+  "googleApiKey": "AIzaSyAz3R-UazbEkRk2NR1touxIZnHbiZe4gNo",
+  "timeZone": "Asia/Seoul",
+  "monthsBack": 2,
+  "koreanHolidays": true
+}

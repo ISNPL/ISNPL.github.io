@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="Profile photo placeholder">
+  <rect width="400" height="400" fill="#d7dde3"/>
+  <circle cx="200" cy="155" r="78" fill="#aeb8c2"/>
+  <path d="M70 360c0-78 58-130 130-130s130 52 130 130z" fill="#aeb8c2"/>
+  <text x="200" y="215" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#ffffff" text-anchor="middle" opacity="0.55">KP</text>
+</svg>

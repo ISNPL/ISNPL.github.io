@@ -1,0 +1,6 @@
+{
+  "_comment": "연구실 갤러리(사진). 사진 파일을 img/gallery/ 폴더에 올린 뒤, 아래 items 에 박스(앨범) 단위로 추가하세요(최신이 위로). 박스 한 개에 사진 한 장이면 \"src\", 여러 장이면 \"images\":[...] 를 쓰세요. caption=설명(선택), date=날짜 표시용(선택). 그런 다음 node tools/build.js. 아래 sample-*.svg 는 예시이니 실제 사진으로 교체/삭제하세요.",
+  "items": [
+    { "images": ["/img/gallery/sample-1.svg", "/img/gallery/sample-2.svg", "/img/gallery/sample-3.svg"], "caption": "Lab seminar Test", "date": "2026" }
+  ]
+}

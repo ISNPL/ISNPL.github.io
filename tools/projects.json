@@ -1,0 +1,29 @@
+{
+  "_comment": "Projects shown on the homepage (#projects, recent few) and the /project/ page (all, paginated). Numbering is automatic (newest/top = highest number). EXAMPLES below — replace with real projects. Fields: title, period(기간 — 월까지, 예: \"2024.03 – present\" 또는 \"2022.03 – 2024.02\"), role, funder, description, url(optional). 정렬은 period의 시작 연·월 기준 최신순.",
+  "projects": [
+    {
+      "title": "Development of Trustworthy Agentic AI Technologies for the Trust AI Ecosystem",
+      "period": "2026.04 – present",
+      "role": "Principal Investigator",
+      "funder": "Ministry of Science and ICT & Institute of Information & communications Technology Planning & Evaluation (IITP)",
+      "description": "To establish a trustworthy Agentic AI ecosystem by developing verifiable identity, authentication, authorization, and data trust technologies for autonomous AI agents and multi-agent systems.",
+      "url": ""
+    },
+    {
+      "title": "Research on Blockchain-Based Data Management Technologies to Ensure Data Sovereignty for Digital Assets in Web 3.0 Environments",
+      "period": "2025.02 – 2025.11",
+      "role": "Principal Investigator",
+      "funder": "KOREA INSTITUTE OF INFORMATION SECURITY & CRYPTOLOGY",
+      "description": "To develop blockchain-based technologies for decentralized management, ownership verification, access control, and secure sharing of digital assets while preserving data sovereignty in Web 3.0 ecosystems.",
+      "url": ""
+    },
+    {
+      "title": "Development of Secure Drone Communication Technologies and Testbeds Using Wireless Signal Feature-Based Secret Key Generation",
+      "period": "2025.06 – 2025.11",
+      "role": "Principal Investigator",
+      "funder": "Electronics and Telecommunications Research Institute (ETRI)",
+      "description": "To develop cryptographic modules and testing environments for secure and resilient communication among drones in autonomous aerial networks.",
+      "url": ""
+    }
+  ]
+}

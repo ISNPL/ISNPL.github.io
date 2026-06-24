@@ -1,0 +1,330 @@
+/* ============================================================================
+   ISNP Lab — DESIGN v3 (dark-header look) — BLUE palette + dark-mode aware.
+   Loaded AFTER academic.css. Light + dark (body.dark) variants.
+   Retune the palette in :root.
+   ============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  --v-primary: #004e96;        /* navy blue */
+  --v-primary-dark: #00345f;
+  --v-primary-light: #5b9bd5;  /* lighter blue (readable on dark) */
+  --v-tag: #004e96;
+  --v-ink: #1f2430;
+  --v-muted: #5b6472;
+  --v-border: #e2e8f0;
+  --v-bg: #f6f9fc;
+  --v-header: #0c2440;         /* deep navy header */
+  --d-surface: #18222e;        /* dark-mode card surface */
+  --d-border: rgba(255,255,255,0.12);
+  --d-text: #e6eaf0;
+  --d-muted: #aab3c0;
+}
+
+/* ---- typography ---- */
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; color: var(--v-ink); background: var(--v-bg); }
+h1, h2, h3, h4, h5, .navbar-brand, .portrait-title h2, .article-title { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: -.01em; }
+a { color: var(--v-primary); }
+a:hover { color: var(--v-primary-dark); }
+
+/* ---- dark header (same in both modes) ---- */
+#navbar-main { background: var(--v-header) !important; box-shadow: 0 2px 16px rgba(12,36,64,.30); border: 0; }
+#navbar-main .navbar-brand { color: #fff !important; font-weight: 800; }
+#navbar-main .nav-link, #navbar-main .nav-link .navItem, #navbar-main .nav-icons .nav-link i { color: #cfe0f2 !important; }
+#navbar-main .nav-link:hover .navItem, #navbar-main .nav-link.active .navItem { color: #fff !important; }
+#navbar-main .nav-link .navItem { position: relative; padding-bottom: 4px; }
+#navbar-main .nav-link:hover .navItem::after, #navbar-main .nav-link.active .navItem::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--v-primary-light); border-radius: 2px;
+}
+#navbar-main .navbar-toggler { color: #fff; border-color: rgba(255,255,255,.3); }
+
+/* ---- sections ---- */
+.home-section { padding: 4rem 0; }
+.home-section:nth-of-type(even) { background: #eef3fa; }
+#about.home-section { background: linear-gradient(160deg, #e9f1fb 0%, var(--v-bg) 60%); }
+.section-heading h1 { color: var(--v-primary-dark); font-weight: 800; position: relative; padding-bottom: .4rem; }
+.section-heading h1::after { content: ''; display: block; width: 52px; height: 4px; margin-top: .5rem; background: linear-gradient(90deg, var(--v-primary), var(--v-primary-light)); border-radius: 3px; }
+
+/* ---- profile / interests (colored bar only, no bullet) ---- */
+#profile .avatar { border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,78,150,.22); width: 240px !important; height: 240px !important; object-fit: contain !important; background: #fff; }
+.portrait-title h3 { color: var(--v-primary); }
+.ul-interests { list-style: none; padding-left: 0; margin-left: 0; }
+.ul-interests li { list-style: none; border-left: 3px solid var(--v-primary); padding-left: .6rem; margin-bottom: .35rem; }
+.ul-interests li::before { content: none !important; }
+
+/* ---- buttons ---- */
+.btn-outline-primary { color: var(--v-primary) !important; border-color: var(--v-primary) !important; border-radius: 999px; font-weight: 600; }
+.btn-outline-primary:hover { background: var(--v-primary) !important; color: #fff !important; }
+
+/* ---- homepage publication list: keep theme layout, recolor accents (SAFE) ---- */
+.pub-year { color: rgba(0,78,150,0.08) !important; }
+.pub-tag-label { background: rgba(0,78,150,0.12) !important; color: var(--v-primary-dark) !important; }
+.articleTittle a { color: var(--v-ink); }
+.articleTittle a:hover { color: var(--v-primary); }
+
+/* ISNP Lab member emphasis */
+.isnp-member { font-weight: 800; color: var(--v-primary); }
+
+/* ---- /publication/ category nav + sections ---- */
+.pub-cat-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin: .25rem 0 1.5rem; }
+.pub-cat-nav a { display: inline-block; padding: .35rem .8rem; border: 1px solid var(--v-border); border-radius: 999px; color: var(--v-primary); background: #fff; text-decoration: none; font-size: .85rem; font-weight: 600; }
+.pub-cat-nav a:hover { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+.pub-cat-title { margin-top: 2rem; padding-bottom: .3rem; border-bottom: 2px solid var(--v-primary); color: var(--v-primary-dark); scroll-margin-top: 80px; }
+.pub-cat-title small { color: #9aa0b3; font-weight: 400; }
+
+/* ---- numbered listing rows (card style) ---- */
+.pub-listing-item { display: flex; align-items: flex-start; gap: .9rem; padding: .85rem 1rem; margin-bottom: .6rem; background: #fff; border: 1px solid var(--v-border); border-radius: 12px; transition: box-shadow .15s, transform .15s; }
+.pub-listing-item:hover { box-shadow: 0 8px 22px rgba(0,78,150,.10); transform: translateY(-1px); }
+.pub-leftcol { flex: 0 0 3.4rem; display: flex; flex-direction: column; align-items: center; gap: .3rem; text-align: center; }
+.pub-leftcol .pub-num { font-size: 1.15rem; font-weight: 800; color: var(--v-primary); line-height: 1; font-variant-numeric: tabular-nums; }
+.pub-leftcol .pub-star { font-size: 1.1rem; color: #f5a623; line-height: 1; }
+.pub-leftcol .pub-vtag { display: inline-block; background: var(--v-tag); color: #fff; font-size: .68rem; font-weight: 600; padding: .05rem .4rem; border-radius: 5px; max-width: 3.4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pub-body { flex: 1 1 auto; }
+.pub-body .pub-title { font-weight: 700; line-height: 1.35; font-family: 'Plus Jakarta Sans', sans-serif; }
+.pub-body .pub-title a { color: #1f2430; }
+.pub-body .pub-title a:hover { color: var(--v-primary); }
+.pub-body .pub-authors { margin-top: .15rem; }
+.pub-body .pub-venue { color: var(--v-muted); font-size: .92rem; margin-top: .1rem; }
+
+/* ---- pagination pager ---- */
+.pagination-nav { margin: 1.8rem 0 .5rem; }
+.pagination-nav .pagination { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: center; list-style: none; padding: 0; }
+.pagination-nav .page-link { display: inline-block; min-width: 2.2rem; text-align: center; padding: .4rem .6rem; border: 1px solid var(--v-border); border-radius: 8px; color: var(--v-primary); background: #fff; text-decoration: none; }
+.pagination-nav .page-item.active .page-link { background: var(--v-primary); color: #fff; border-color: var(--v-primary); font-weight: 700; }
+.pagination-nav .page-item.disabled .page-link { color: #a7adbf; background: #f1f4f8; }
+.pagination-nav .page-info { text-align: center; color: var(--v-muted); font-size: .85rem; margin-top: .45rem; }
+
+/* ---- projects ---- */
+.wide-page { padding-bottom: 2.5rem; }
+.wide-page > h1 { margin-bottom: .15rem; }
+.wide-page .project-grid { margin-top: 1rem; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; align-items: start; }
+.project-card { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; border: 1px solid var(--v-border); border-radius: 14px; padding: 1.1rem 1.2rem; box-shadow: 0 2px 10px rgba(12,36,64,.05); }
+.project-card:hover { box-shadow: 0 10px 26px rgba(0,78,150,.12); }
+.project-card .proj-num { color: #fff; background: var(--v-primary); border-radius: 7px; padding: .05rem .5rem; font-weight: 700; font-size: .8rem; }
+.project-card .proj-meta { color: var(--v-primary-dark); font-size: .82rem; font-weight: 600; }
+.project-card h4 { margin: .55rem 0 .2rem; font-size: 1.05rem; }
+.project-card h4 a { color: #1f2430; }
+.project-card .proj-desc { color: #46505c; font-size: .9rem; margin-top: .4rem; }
+
+/* ---- footer ---- */
+.site-footer { border-top: 3px solid var(--v-primary); }
+
+/* ============================================================================
+   DARK MODE (body.dark) — adapt the overlay so cards/sections aren't light
+   blocks on a dark page; brighten accents for contrast.
+   ============================================================================ */
+body.dark .home-section:nth-of-type(even) { background: rgba(255,255,255,0.03); }
+body.dark #about.home-section { background: linear-gradient(160deg, rgba(0,78,150,0.18) 0%, transparent 60%); }
+/* dark-mode header: one coordinated dark navy for the bar + its menu/collapse + toggler
+   (the bright navy clashed with the dark page, and the menu area was a different dark). */
+body.dark #navbar-main,
+body.dark #navbar-main .navbar-collapse,
+body.dark #navbar-main .navbar-toggler { background: #182334 !important; }
+body.dark #navbar-main { box-shadow: 0 2px 14px rgba(0,0,0,.45) !important; }
+body.dark .section-heading h1, body.dark .portrait-title h3, body.dark a { color: var(--v-primary-light); }
+body.dark .pub-cat-title { color: var(--v-primary-light); border-bottom-color: var(--v-primary-light); }
+body.dark .isnp-member { color: var(--v-primary-light); }
+body.dark .ul-interests li { border-left-color: var(--v-primary-light); }
+body.dark .pub-year { color: rgba(255,255,255,0.06) !important; }
+body.dark .pub-tag-label { background: rgba(91,155,213,0.22) !important; color: #cfe0f2 !important; }
+
+/* surfaces (cards, pills, pager) */
+body.dark .pub-listing-item,
+body.dark .project-card { background: var(--d-surface); border-color: var(--d-border); }
+body.dark .pub-cat-nav a,
+body.dark .pagination-nav .page-link { background: var(--d-surface); border-color: var(--d-border); color: var(--v-primary-light); }
+body.dark .pub-cat-nav a:hover,
+body.dark .pagination-nav .page-item.active .page-link { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+body.dark .pagination-nav .page-item.disabled .page-link { background: #11181f; color: #6b7280; }
+
+/* text inside cards (literal hex + high specificity: many base `a` rules compete in dark mode) */
+body.dark .pub-listing-item .pub-body .pub-title a,
+body.dark .pub-listing-item .pub-body .pub-title a:visited,
+body.dark .project-card h4 a,
+body.dark .project-card h4 a:visited,
+body.dark .articleTittle a { color: #e6eaf0 !important; }
+body.dark .pub-body .pub-title a:hover,
+body.dark .project-card h4 a:hover { color: var(--v-primary-light) !important; }
+body.dark .pub-body .pub-venue,
+body.dark .project-card .proj-desc { color: var(--d-muted) !important; }
+body.dark .project-card .proj-meta { color: var(--v-primary-light) !important; }
+body.dark .btn-outline-primary { color: var(--v-primary-light) !important; border-color: var(--v-primary-light) !important; }
+body.dark .btn-outline-primary:hover { background: var(--v-primary-light) !important; color: #0c2440 !important; }
+body.dark #profile .avatar { border-color: #2a3744; }
+
+/* ============================================================================
+   LAB CALENDAR (/calendar/) — dependency-free month grid + upcoming list.
+   Rendered by js/lab-calendar.js from window.LAB_EVENTS.
+   ============================================================================ */
+.cal-wrap { max-width: 960px; }
+.cal-bar { display: flex; align-items: center; gap: .6rem; margin: .25rem 0 1rem; }
+.cal-bar .cal-title { font-size: 1.5rem; margin: 0; color: var(--v-primary-dark); font-weight: 800; min-width: 11rem; text-align: center; }
+.cal-nav, .cal-today { border: 1px solid var(--v-border); background: #fff; color: var(--v-primary); border-radius: 8px; cursor: pointer; font-weight: 700; }
+.cal-nav { width: 2.2rem; height: 2.2rem; font-size: 1.2rem; line-height: 1; }
+.cal-today { padding: .35rem .75rem; margin-left: auto; font-size: .85rem; }
+.cal-nav:hover, .cal-today:hover { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-wd { text-align: center; font-weight: 700; font-size: .8rem; color: var(--v-muted); padding: .3rem 0; }
+.cal-wd.cal-sun, .cal-cell.cal-sun .cal-daynum { color: #d6453b; }
+.cal-wd.cal-sat, .cal-cell.cal-sat .cal-daynum { color: #2f6fb0; }
+.cal-cell { min-height: 92px; border: 1px solid var(--v-border); border-radius: 10px; background: #fff; padding: .35rem; overflow: hidden; }
+.cal-cell.cal-out { background: #f4f7fb; opacity: .55; }
+.cal-cell.cal-today-cell { border-color: var(--v-primary); box-shadow: inset 0 0 0 1px var(--v-primary); }
+.cal-daynum { font-size: .82rem; font-weight: 700; color: var(--v-ink); margin-bottom: .2rem; }
+.cal-evs { display: flex; flex-direction: column; gap: 3px; }
+.cal-chip { display: flex; align-items: center; gap: 4px; font-size: .72rem; line-height: 1.2; padding: 2px 5px; border-radius: 6px; background: #eef3fa; color: var(--v-ink); text-decoration: none; overflow: hidden; }
+.cal-chip:hover { filter: brightness(.96); }
+.cal-chip-txt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-dot { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--v-primary); }
+
+/* event type colors (dot + chip tint) */
+.ev-seminar .cal-dot, .cal-dot.ev-seminar { background: #2f6fb0; }
+.ev-meeting .cal-dot, .cal-dot.ev-meeting { background: #0e9aa7; }
+.ev-deadline .cal-dot, .cal-dot.ev-deadline { background: #e0483e; }
+.ev-holiday .cal-dot, .cal-dot.ev-holiday { background: #8a93a0; }
+.ev-event .cal-dot, .cal-dot.ev-event { background: #4a9c2d; }
+.cal-chip.ev-seminar { background: #eaf2fb; }
+.cal-chip.ev-meeting { background: #e6f6f7; }
+.cal-chip.ev-deadline { background: #fdecea; }
+.cal-chip.ev-holiday { background: #eef0f3; }
+.cal-chip.ev-event { background: #ecf7e7; }
+
+.cal-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 0; font-size: .82rem; color: var(--v-muted); }
+.cal-leg { display: inline-flex; align-items: center; gap: .4rem; }
+
+.cal-up { margin-top: 2.2rem; }
+.cal-up h2 { font-size: 1.2rem; color: var(--v-primary-dark); border-bottom: 2px solid var(--v-primary); padding-bottom: .3rem; }
+.cal-up-list { list-style: none; padding: 0; margin: .8rem 0 0; }
+.cal-up-item { display: flex; align-items: baseline; gap: .6rem; padding: .5rem .2rem; border-bottom: 1px solid var(--v-border); }
+.cal-up-when { flex: 0 0 7.5rem; font-weight: 700; color: var(--v-primary-dark); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.cal-up-title { flex: 1 1 auto; }
+.cal-up-loc { color: var(--v-muted); font-size: .88rem; }
+
+@media (max-width: 640px) {
+  .cal-grid { gap: 3px; }
+  .cal-cell { min-height: 70px; padding: .2rem; border-radius: 7px; }
+  .cal-chip { font-size: .62rem; padding: 1px 3px; }
+  .cal-wd { font-size: .68rem; }
+  .cal-up-when { flex-basis: 5.5rem; font-size: .82rem; }
+}
+
+/* dark mode */
+body.dark .cal-bar .cal-title, body.dark .cal-up h2 { color: var(--v-primary-light); }
+body.dark .cal-up h2 { border-bottom-color: var(--v-primary-light); }
+body.dark .cal-nav, body.dark .cal-today { background: var(--d-surface); border-color: var(--d-border); color: var(--v-primary-light); }
+body.dark .cal-nav:hover, body.dark .cal-today:hover { background: var(--v-primary); color: #fff; }
+body.dark .cal-cell { background: var(--d-surface); border-color: var(--d-border); }
+body.dark .cal-cell.cal-out { background: #11181f; }
+body.dark .cal-daynum { color: var(--d-text); }
+body.dark .cal-chip { background: rgba(255,255,255,.06); color: var(--d-text); }
+body.dark .cal-up-item { border-bottom-color: var(--d-border); }
+body.dark .cal-up-when { color: var(--v-primary-light); }
+
+/* ---- calendar event popup (modal) ---- */
+.cal-chip, .cal-up-item { cursor: pointer; }
+.cal-up-item:hover { background: #f4f7fb; border-radius: 6px; }
+.cal-up-memo { color: var(--v-muted); font-size: .8rem; margin-left: .35rem; }
+body.cal-modal-open { overflow: hidden; }
+.cal-modal { position: fixed; inset: 0; z-index: 1080; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.cal-modal[hidden] { display: none; }
+.cal-modal-backdrop { position: absolute; inset: 0; background: rgba(12,36,64,.5); backdrop-filter: blur(1px); }
+.cal-modal-card { position: relative; background: #fff; border-radius: 14px; width: 100%; max-width: 440px; padding: 1.4rem 1.5rem 1.5rem; box-shadow: 0 24px 64px rgba(0,0,0,.32); max-height: 82vh; overflow: auto; }
+.cal-modal-x { position: absolute; top: .5rem; right: .6rem; border: 0; background: transparent; font-size: 1.6rem; line-height: 1; color: var(--v-muted); cursor: pointer; padding: .1rem .4rem; border-radius: 8px; }
+.cal-modal-x:hover { background: #eef3fa; color: var(--v-ink); }
+.cal-m-badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; font-weight: 700; color: var(--v-primary-dark); background: #eef3fa; padding: .15rem .55rem; border-radius: 999px; }
+.cal-m-title { font-size: 1.25rem; margin: .55rem 0 .7rem; line-height: 1.3; padding-right: 1.5rem; }
+.cal-m-row { display: flex; gap: .55rem; align-items: flex-start; color: var(--v-ink); margin: .3rem 0; font-size: .95rem; }
+.cal-m-ic { flex: 0 0 auto; }
+.cal-m-dim { color: var(--v-muted); }
+.cal-m-desc { margin-top: .85rem; padding-top: .85rem; border-top: 1px solid var(--v-border); color: #46505c; font-size: .92rem; line-height: 1.55; white-space: normal; word-break: break-word; }
+.cal-m-desc p { margin: 0 0 .55rem; }
+.cal-m-desc p:last-child, .cal-m-desc ul:last-child, .cal-m-desc ol:last-child { margin-bottom: 0; }
+.cal-m-desc ul, .cal-m-desc ol { margin: .3rem 0 .55rem; padding-left: 1.3rem; }
+.cal-m-desc li { margin: .12rem 0; }
+.cal-m-desc a { color: var(--v-primary); text-decoration: underline; word-break: break-all; }
+body.dark .cal-m-desc a { color: var(--v-primary-light); }
+
+/* ---- homepage publication counts ---- */
+.pub-counts { color: var(--v-muted); }
+.pub-counts strong { color: var(--v-primary-dark); }
+body.dark .pub-counts strong { color: var(--v-primary-light); }
+
+/* ============================================================================
+   GALLERY (/gallery/) — responsive grid + dependency-free lightbox.
+   ============================================================================ */
+.gal-wrap { max-width: 1100px; }
+.gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.gal-item { margin: 0; cursor: pointer; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--v-border); box-shadow: 0 2px 10px rgba(12,36,64,.05); transition: box-shadow .15s, transform .15s; }
+.gal-item:hover { box-shadow: 0 10px 26px rgba(0,78,150,.14); transform: translateY(-2px); }
+.gal-thumb { position: relative; line-height: 0; }
+.gal-item img { display: block; width: 100%; height: 180px; object-fit: cover; background: #eef3fa; }
+.gal-badge { position: absolute; top: .4rem; right: .4rem; display: inline-flex; align-items: center; gap: .25rem; background: rgba(12,36,64,.78); color: #fff; font-size: .72rem; font-weight: 600; line-height: 1; padding: .22rem .45rem; border-radius: 6px; }
+.gal-cap { padding: .55rem .7rem; font-size: .85rem; color: var(--v-ink); }
+.gal-date { color: var(--v-muted); font-size: .78rem; }
+body.dark .gal-item { background: var(--d-surface); border-color: var(--d-border); }
+body.dark .gal-cap { color: var(--d-text); }
+body.dark .gal-item img { background: #11181f; }
+
+body.gal-lb-open { overflow: hidden; }
+.gal-lb { position: fixed; inset: 0; z-index: 1090; display: flex; align-items: center; justify-content: center; }
+.gal-lb[hidden] { display: none; }
+.gal-lb-bg { position: absolute; inset: 0; background: rgba(8,20,36,.85); }
+.gal-lb-img { max-width: 92vw; max-height: 82vh; object-fit: contain; border-radius: 8px; box-shadow: 0 12px 44px rgba(0,0,0,.55); background: #fff; }
+.gal-lb-meta { position: absolute; left: 0; right: 0; bottom: 1.1rem; z-index: 2; text-align: center; padding: 0 4rem; pointer-events: none; }
+.gal-lb-count { display: block; font-size: .8rem; color: #aab3c0; margin-bottom: .2rem; font-variant-numeric: tabular-nums; }
+.gal-lb-cap { color: #e6eaf0; font-size: .95rem; }
+.gal-lb-x { position: absolute; top: 1rem; right: 1.2rem; z-index: 2; background: transparent; border: 0; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.gal-lb-prev, .gal-lb-next { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.12); border: 0; color: #fff; font-size: 2.2rem; line-height: 1; padding: 0; width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer; }
+.gal-lb-prev { left: 1rem; } .gal-lb-next { right: 1rem; }
+.gal-lb-x:hover, .gal-lb-prev:hover, .gal-lb-next:hover { background: rgba(255,255,255,.25); }
+@media (max-width: 640px) {
+  .gal-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .6rem; }
+  .gal-item img { height: 130px; }
+  .gal-lb-prev, .gal-lb-next { width: 2.4rem; height: 2.4rem; font-size: 1.6rem; }
+}
+.cal-m-actions { margin-top: 1.1rem; }
+body.dark .cal-up-item:hover { background: rgba(255,255,255,.05); }
+body.dark .cal-modal-card { background: var(--d-surface); color: var(--d-text); box-shadow: 0 24px 64px rgba(0,0,0,.6); }
+body.dark .cal-modal-x { color: var(--d-muted); }
+body.dark .cal-modal-x:hover { background: rgba(255,255,255,.08); color: var(--d-text); }
+body.dark .cal-m-badge { background: rgba(255,255,255,.08); color: var(--v-primary-light); }
+body.dark .cal-m-title, body.dark .cal-m-row { color: var(--d-text); }
+body.dark .cal-m-desc { color: var(--d-muted); border-top-color: var(--d-border); }
+
+/* ============================================================================
+   HOMEPAGE PROJECTS — single-row horizontal carousel (swipe + arrows), responsive.
+   (The /project/ page keeps the .project-grid layout — unaffected.)
+   ============================================================================ */
+.proj-carousel { position: relative; }
+.project-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding: .25rem .15rem 1rem; scrollbar-width: thin; scrollbar-color: rgba(0,78,150,.35) transparent; }
+.project-row > .project-card { flex: 0 0 300px; width: 300px; scroll-snap-align: start; }
+.project-row::-webkit-scrollbar { height: 8px; }
+.project-row::-webkit-scrollbar-thumb { background: rgba(0,78,150,.28); border-radius: 4px; }
+.project-row::-webkit-scrollbar-track { background: transparent; }
+.proj-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border: 1px solid var(--v-border); border-radius: 50%; background: #fff; color: var(--v-primary); font-size: 1.6rem; line-height: 1; cursor: pointer; box-shadow: 0 3px 12px rgba(12,36,64,.16); transition: background .15s, color .15s, opacity .15s; }
+.proj-arrow:hover { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+.proj-arrow:disabled { opacity: 0; pointer-events: none; }
+.proj-prev { left: -.7rem; }
+.proj-next { right: -.7rem; }
+.proj-carousel.no-scroll .proj-arrow { display: none; }
+@media (max-width: 640px) {
+  .project-row > .project-card { flex-basis: 82%; width: 82%; }
+  .proj-arrow { display: none; }   /* mobile: swipe to scroll */
+}
+body.dark .proj-arrow { background: var(--d-surface); border-color: var(--d-border); color: var(--v-primary-light); }
+body.dark .proj-arrow:hover { background: var(--v-primary); color: #fff; }
+body.dark .project-row { scrollbar-color: rgba(91,155,213,.45) transparent; }
+body.dark .project-row::-webkit-scrollbar-thumb { background: rgba(91,155,213,.4); }
+
+/* ---- mobile (collapsed) menu — LIGHT mode only: dropdown bg is white, so menu text must be dark blue ---- */
+@media (max-width: 991.98px) {
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link,
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link .navItem,
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link i { color: var(--v-primary) !important; }
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link:hover .navItem,
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link.active .navItem,
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link:hover i,
+  body:not(.dark) #navbar-main .navbar-collapse .nav-link.active i { color: var(--v-primary-dark) !important; }
+}
