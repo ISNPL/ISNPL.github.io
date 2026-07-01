@@ -15,6 +15,7 @@
     "alumni": []
   },
   "teaching": [
+    { "year": 2026, "term": "Fall", "courses": ["Blockchain", "Data Processing Programming", "Data Communications"] },
     { "year": 2026, "term": "Spring", "courses": ["Cryptographic Protocols", "Introduction to Artificial Intelligence", "Programming for Artificial Intelligence"] },
     { "year": 2025, "term": "Fall", "courses": ["Blockchain", "Data Processing Programming", "AI & Data Sciences"] },
     { "year": 2025, "term": "Spring", "courses": ["Introduction to Artificial Intelligence", "Programming for Artificial Intelligence", "Financial Security"] },
