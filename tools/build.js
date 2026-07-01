@@ -293,7 +293,8 @@ ${cards || '<p class="text-muted">Projects will be listed here.</p>'}
 
 // one term block: "<b>2026 Spring</b><ul>...courses...</ul>"
 function termBlock(t) {
-  return `<div style="margin-bottom:.6rem;"><b>${t.year} ${esc(t.term)}</b>\n<ul>\n${(t.courses || []).map((c) => `  <li>${esc(c)}</li>`).join('\n')}\n</ul></div>`;
+  //return `<div style="margin-bottom:.6rem;"><b>${t.year} ${esc(t.term)}</b>\n<ul>\n${(t.courses || []).map((c) => `  <li>${esc(c)}</li>`).join('\n')}\n</ul></div>`; original font size
+  return `<div style="margin-bottom:.6rem;"><h3>${t.year} ${esc(t.term)}</h3>\n<ul>\n${(t.courses || []).map((c) => `  <li>${esc(c)}</li>`).join('\n')}\n</ul></div>`; //updated font size
 }
 function sectionTeaching() {
   const cur = teaching.filter((t) => t.year === latestTeachYear);
