@@ -32,7 +32,7 @@ const log = (...a) => console.log(...a);
 
 // Canonical site origin (GitHub Pages user site served at the root). Used for
 // canonical/og URLs, the author card link, and the sitemap. Change it here only.
-const SITE_URL = 'https://kisung-park.github.io';
+const SITE_URL = 'https://isnpl.github.io';
 
 const HOME_PUB_LIMIT = 8, HOME_NEWS_LIMIT = 8, HOME_PROJ_LIMIT = 4;
 const PER_PAGE_PUB = 20, PER_PAGE_NEWS = 10, PER_PAGE_ALUMNI = 12, PER_PAGE_PROJ = 10;
@@ -189,11 +189,20 @@ function newsItemHtml(n) {
 }
 function memberListHtml(list) {
   if (!list || !list.length) return '<li>(Recruiting &mdash; positions open.)</li>';
-  return list.map((m) => { const meta = [m.role, m.topic].filter(Boolean).join(' &mdash; '); return `<li>${esc(m.name)}${meta ? ` | <small>${meta}</small>` : ''}</li>`; }).join('\n');
+  return list.map((m) => {
+    const meta = [m.role, m.topic].filter(Boolean).join(' &mdash; ');
+    const name = m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.name)}</a>` : esc(m.name);
+    return `<li>${name}${meta ? ` | <small>${meta}</small>` : ''}</li>`;
+  }).join('\n');
 }
 function alumniListHtml(list) {
   if (!list || !list.length) return '<li class="text-muted">No alumni yet.</li>';
-  return list.map((a) => { const deg = [a.degree, a.year].filter(Boolean).join(' '); return `<li><span class="name">${esc(a.name)}</span>${deg ? `, ${esc(deg)}` : ''}` + (a.thesis ? `<div class="thesis"><u>Thesis:</u> ${esc(a.thesis)}</div>` : '') + (a.now ? `<div class="job">(now ${esc(a.now)})</div>` : '') + `</li>`; }).join('\n');
+  return list.map((a) => {
+    const deg = [a.degree, a.year].filter(Boolean).join(' ');
+    const nameInner = `<span class="name">${esc(a.name)}</span>`;
+    const name = a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${nameInner}</a>` : nameInner;
+    return `<li>${name}${deg ? `, ${esc(deg)}` : ''}` + (a.thesis ? `<div class="thesis"><u>Thesis:</u> ${esc(a.thesis)}</div>` : '') + (a.now ? `<div class="job">(now ${esc(a.now)})</div>` : '') + `</li>`;
+  }).join('\n');
 }
 /* ---------- project renderers ---------- */
 function projectCardHtml(p) {
@@ -319,9 +328,9 @@ function sectionTeaching() {
 /* ---------- global text fixes ---------- */
 function applyGlobalFixes(html) {
   return html
-    .split('thanghoang.github.io').join('kisung-park.github.io')
-    .split('isnpl.github.io').join('kisung-park.github.io')
-    .split('kisungpark.github.io').join('kisung-park.github.io')
+    .split('thanghoang.github.io').join('isnpl.github.io')
+    .split('kisung-park.github.io').join('isnpl.github.io')
+    .split('kisungpark.github.io').join('isnpl.github.io')
     .split('Thang Hoang').join('Kisung Park')
     .split('Applied Cryptograhy').join('Applied Cryptography')
     .split('thanghoang@vt.edu').join('kisung@gachon.ac.kr')
@@ -350,7 +359,7 @@ function pageHead(head, title, desc, canonical) {
     .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonical}">`);
 }
 function pageWrap(chrome, title, desc, canonicalPath, inner) {
-  const head = pageHead(chrome.head, `${title} | Kisung Park`, desc, SITE_URL + canonicalPath);
+  const head = pageHead(chrome.head, `${title} | ISPL`, desc, SITE_URL + canonicalPath);
   return `<!DOCTYPE html><html lang="en-us"><head>${head}</head>
 <body id="top" data-spy="scroll" data-offset="70">
 ${chrome.search}
@@ -362,7 +371,7 @@ ${chrome.tail}`;
 }
 // Wide wrapper (full page width like the homepage) — used for the grid-based Projects page
 function pageWrapWide(chrome, title, desc, canonicalPath, inner) {
-  const head = pageHead(chrome.head, `${title} | Kisung Park`, desc, SITE_URL + canonicalPath);
+  const head = pageHead(chrome.head, `${title} | ISPL`, desc, SITE_URL + canonicalPath);
   return `<!DOCTYPE html><html lang="en-us"><head>${head}</head>
 <body id="top" data-spy="scroll" data-offset="70">
 ${chrome.search}
