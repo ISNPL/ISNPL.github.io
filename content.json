@@ -12,7 +12,10 @@
       { "name": "Dongyeon Yoo", "role": "Research Intern", "topic": "AI Security", "url": "" },
       { "name": "Kyubin Park", "role": "Research Intern", "topic": "Post-Quantum Cryptography, Applied Cryptography", "url": "https://giyuubin.github.io/" }
     ],
-    "alumni": []
+      "alumni": [],
+    "_alumni_example": [
+      { "name": "홍길동", "degree": "MS", "year": 2025, "thesis": "논문 제목", "now": "Samsung", "url": "https://..." }
+    ]
   },
   "teaching": [
     { "year": 2026, "term": "Spring", "courses": ["Cryptographic Protocols", "Introduction to Artificial Intelligence", "Programming for Artificial Intelligence"] },
