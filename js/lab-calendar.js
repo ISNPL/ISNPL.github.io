@@ -230,6 +230,12 @@
       fetchCal(cfg, KR_HOLIDAYS, timeMin, 'holiday').catch(function (e) {
         console.warn('[calendar] Korean holidays fetch failed (continuing without).', e); return [];
       }));
+    // 추가 캘린더 (Conference Deadlines)
+    (cfg.extraCalendars || []).forEach(function (x) {
+      jobs.push(fetchCal(cfg, x.id, timeMin, x.type || null).catch(function (e) {
+        console.warn('[calendar] extra calendar fetch failed (continuing).', x.id, e); return [];
+      })); //여기까지.
+    }); 
     Promise.all(jobs).then(function (lists) {
       setEvents([].concat.apply([], lists));
     }).catch(function (err) {                                                        // primary failed -> fall back to events.json
