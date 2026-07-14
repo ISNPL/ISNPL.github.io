@@ -19,7 +19,7 @@ const events = (() => {
 const calConfig = (() => {
   try {
     const c = JSON.parse(fs.readFileSync(path.join(TOOLS, 'calendar-config.json'), 'utf8'));
-    return { googleCalendarId: c.googleCalendarId || '', googleApiKey: c.googleApiKey || '', timeZone: c.timeZone || 'Asia/Seoul', monthsBack: c.monthsBack || 2, koreanHolidays: c.koreanHolidays !== false };
+    return { googleCalendarId: c.googleCalendarId || '', googleApiKey: c.googleApiKey || '', timeZone: c.timeZone || 'Asia/Seoul', monthsBack: c.monthsBack || 2, koreanHolidays: c.koreanHolidays !== false, extraCalendars: c.extraCalendars || [] };
   } catch (e) { return { googleCalendarId: '', googleApiKey: '', timeZone: 'Asia/Seoul', monthsBack: 2, koreanHolidays: true }; }
 })();
 const gallery = (() => {

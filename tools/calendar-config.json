@@ -5,5 +5,11 @@
   "googleApiKey": "AIzaSyAz3R-UazbEkRk2NR1touxIZnHbiZe4gNo",
   "timeZone": "Asia/Seoul",
   "monthsBack": 2,
-  "koreanHolidays": true
+  "koreanHolidays": true,
+  "extraCalendars": [
+    {
+      "id": "193f5d00506dc8a0430cf6e929f1efa58e80bc6b4ef7f9952ca7baf138823e6a@group.calendar.google.com",
+      "type": "deadline"
+    }
+  ]
 }
