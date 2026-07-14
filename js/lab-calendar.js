@@ -190,11 +190,19 @@
   });
 
   // ----- Google Calendar source -----
-  var GCOLOR = { '11': 'deadline', '4': 'deadline', '6': 'deadline', '7': 'seminar', '9': 'seminar', '1': 'seminar', '10': 'event', '2': 'meeting', '8': 'holiday' };
+  // Classify a Google Calendar event by keyword in its title.
+  // 세미나/seminar -> seminar, 마감/deadline -> deadline, 회의/meeting -> meeting, else event.
+  function classifyType(title) {
+    var s = String(title || '').toLowerCase();
+    if (s.indexOf('세미나') >= 0 || s.indexOf('seminar') >= 0) return 'seminar';
+    if (s.indexOf('마감') >= 0 || s.indexOf('deadline') >= 0) return 'deadline';
+    if (s.indexOf('회의') >= 0 || s.indexOf('meeting') >= 0) return 'meeting';
+    return 'event';
+  }
   function mapGoogle(items) {
     return (items || []).filter(function (e) { return e.status !== 'cancelled' && e.start && (e.start.date || e.start.dateTime); })
       .map(function (e) {
-        var o = { title: e.summary || '(No title)', location: e.location || '', url: e.htmlLink || '', description: e.description || '', type: GCOLOR[e.colorId] || 'event' };
+        var o = { title: e.summary || '(No title)', location: e.location || '', url: e.htmlLink || '', description: e.description || '', type: classifyType(e.summary) };
         if (e.start.dateTime) {
           o.date = e.start.dateTime.slice(0, 10); o.time = e.start.dateTime.slice(11, 16);
           if (e.end && e.end.dateTime && e.end.dateTime.slice(0, 10) !== o.date) o.end = e.end.dateTime.slice(0, 10);
