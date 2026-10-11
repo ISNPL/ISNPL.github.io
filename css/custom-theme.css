@@ -334,10 +334,12 @@ body.dark .project-row::-webkit-scrollbar-thumb { background: rgba(91,155,213,.4
 }
 
 
-/* conference-tier badges (news + publications): tier "premier" = blue, "top" = gold */
-.tier-badge { display: inline-flex; align-items: center; gap: .25rem; font-size: .7rem; font-weight: 700; line-height: 1; padding: .2rem .5rem; border-radius: 999px; vertical-align: middle; white-space: nowrap; margin-left: .35rem; }
-.tier-premier { background: #004e96; color: #fff; }
-.tier-top { background: #fff4dc; color: #8a5a00; border: 1px solid #f5a623; }
-.tier-top .tier-star { color: #f5a623; }
-body.dark .tier-premier { background: #5b9bd5; color: #0c2440; }
-body.dark .tier-top { background: rgba(245,166,35,.16); color: #f7c873; }
+/* tier boxes (news + publications): tier "top" gold, "second" green, "reputable" blue */
+.tier-box { display: inline-block; font-size: .72rem; font-weight: 700; line-height: 1; padding: .28rem .55rem; border-radius: 4px; margin-left: .4rem; vertical-align: middle; white-space: nowrap; letter-spacing: .01em; }
+.tier-top { background: #f5a623; color: #3d2800; border: 1.5px solid #c98400; }
+.tier-second { background: #2e9e5b; color: #fff; border: 1.5px solid #1f7a42; }
+.tier-reputable { background: #004e96; color: #fff; border: 1.5px solid #00366a; }
+.pub-leftcol .tier-box { margin-left: 0; font-size: .58rem; padding: .2rem .3rem; }
+body.dark .tier-top { background: #e0a030; color: #2b1c00; border-color: #f7c873; }
+body.dark .tier-second { background: #3fae6b; border-color: #7fd6a0; }
+body.dark .tier-reputable { background: #5b9bd5; color: #0c2440; border-color: #a9cbea; }

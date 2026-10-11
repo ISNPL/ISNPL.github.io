@@ -140,10 +140,10 @@ function writeCvPlaceholder() {
 }
 
 /* ---------- publication renderers ---------- */
-// conference-tier badge: tier = "premier" (blue) | "top" (gold); anything else -> no badge
-const TIERS = { premier: 'Premier Conference', top: 'Top-tier Conference' };
+// tier box: tier = "top" (gold) | "second" (green, "2nd-tier") | "reputable" (blue); anything else -> no box
+const TIERS = { top: 'Top-tier', second: '2nd-tier', reputable: 'Reputable' };
 function tierBadge(t) {
-  return TIERS[t] ? ` <span class="tier-badge tier-${t}"><span class="tier-star">&#9733;</span> ${TIERS[t]}</span>` : '';
+  return TIERS[t] ? `<span class="tier-box tier-${t}">${TIERS[t]}</span>` : '';
 }
 function pubItemHtml(p, num) {
   const numBadge = num ? `<span class="pub-num">${p._num}.</span>` : '';
@@ -151,9 +151,9 @@ function pubItemHtml(p, num) {
 <div class="pub-list-item" style="position: relative; margin-bottom: 0rem; display: flex; align-items: flex-start;">
   ${numBadge}<span class="pub-year">${yy(p.year)}</span>
   <div style="display: flex; align-items: flex-start;">
-    <div class="pub-tag"><span class="pub-tag-label">${esc(p.abbr)}</span></div>
+    <div class="pub-tag"><span class="pub-tag-label">${esc(p.abbr)}</span>${tierBadge(p.tier)}</div>
     <div style="flex-grow: 1;">
-      <b class="articleTittle"><a href="${detailHref(p)}">${esc(p.title)}</a>${tierBadge(p.tier)}</b><br/>
+      <b class="articleTittle"><a href="${detailHref(p)}">${esc(p.title)}</a></b><br/>
       <div style="margin-left: 0rem;">
         <span class="article-metadata li-cite-author">${boldKP(p.authors)}</span><br/>
         <span class="li-cite-venue"><b>${esc(p.venue)}</b></span><br/>
@@ -175,9 +175,9 @@ function groupHeading(typeKey) {
 function pubListingItem(p, mode) {
   const left = mode === 'star' ? `<span class="pub-star">&#9733;</span>` : `<span class="pub-num">${p._num}</span>`;
   return `<div class="pub-listing-item">
-  <div class="pub-leftcol">${left}<span class="pub-vtag">${esc(p.abbr)}</span></div>
+  <div class="pub-leftcol">${left}<span class="pub-vtag">${esc(p.abbr)}</span>${tierBadge(p.tier)}</div>
   <div class="pub-body">
-    <div class="pub-title"><a href="${detailHref(p)}">${esc(p.title)}</a>${tierBadge(p.tier)}</div>
+    <div class="pub-title"><a href="${detailHref(p)}">${esc(p.title)}</a></div>
     <div class="pub-authors article-metadata">${boldKP(p.authors)}</div>
     <div class="pub-venue">${esc(p.venue)}</div>
   </div>
