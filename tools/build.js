@@ -188,9 +188,22 @@ function catNavHtml(sections) {
 }
 
 /* ---------- news / members renderers ---------- */
+// attach the tier box to the end of the news HTML, glued to the last word so the box never wraps alone
+function withTier(html, tier) {
+  const b = tierBadge(tier);
+  if (!b) return html;
+  let depth = 0, inTag = false, cut = -1;
+  for (let i = 0; i < html.length; i++) {
+    const c = html[i];
+    if (c === '<') { inTag = true; if (html[i + 1] === '/') depth--; else depth++; }
+    else if (c === '>') { inTag = false; if (html[i - 1] === '/') depth--; }
+    else if (!inTag && depth === 0 && /\s/.test(c)) cut = i;
+  }
+  return cut < 0 ? `<span style="white-space:nowrap">${html}${b}</span>` : `${html.slice(0, cut + 1)}<span style="white-space:nowrap">${html.slice(cut + 1)}${b}</span>`;
+}
 function newsItemHtml(n) {
   const d = n.highlight ? ' newsHighlightDate' : '', t = n.highlight ? ' newsHighlightTitle' : '';
-  return `<div><div class="newsDate${d}">${n.date}</div><div class="newsTitle${t}">${n.html}${tierBadge(n.tier)}</div></div>`;
+  return `<div><div class="newsDate${d}">${n.date}</div><div class="newsTitle${t}">${withTier(n.html, n.tier)}</div></div>`;
 }
 function memberListHtml(list) {
   if (!list || !list.length) return '<li>(Recruiting &mdash; positions open.)</li>';
