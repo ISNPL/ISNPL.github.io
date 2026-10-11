@@ -140,6 +140,11 @@ function writeCvPlaceholder() {
 }
 
 /* ---------- publication renderers ---------- */
+// conference-tier badge: tier = "premier" (blue) | "top" (gold); anything else -> no badge
+const TIERS = { premier: 'Premier Conference', top: 'Top-tier Conference' };
+function tierBadge(t) {
+  return TIERS[t] ? ` <span class="tier-badge tier-${t}"><span class="tier-star">&#9733;</span> ${TIERS[t]}</span>` : '';
+}
 function pubItemHtml(p, num) {
   const numBadge = num ? `<span class="pub-num">${p._num}.</span>` : '';
   return `
@@ -148,7 +153,7 @@ function pubItemHtml(p, num) {
   <div style="display: flex; align-items: flex-start;">
     <div class="pub-tag"><span class="pub-tag-label">${esc(p.abbr)}</span></div>
     <div style="flex-grow: 1;">
-      <b class="articleTittle"><a href="${detailHref(p)}">${esc(p.title)}</a></b><br/>
+      <b class="articleTittle"><a href="${detailHref(p)}">${esc(p.title)}</a>${tierBadge(p.tier)}</b><br/>
       <div style="margin-left: 0rem;">
         <span class="article-metadata li-cite-author">${boldKP(p.authors)}</span><br/>
         <span class="li-cite-venue"><b>${esc(p.venue)}</b></span><br/>
@@ -172,7 +177,7 @@ function pubListingItem(p, mode) {
   return `<div class="pub-listing-item">
   <div class="pub-leftcol">${left}<span class="pub-vtag">${esc(p.abbr)}</span></div>
   <div class="pub-body">
-    <div class="pub-title"><a href="${detailHref(p)}">${esc(p.title)}</a></div>
+    <div class="pub-title"><a href="${detailHref(p)}">${esc(p.title)}</a>${tierBadge(p.tier)}</div>
     <div class="pub-authors article-metadata">${boldKP(p.authors)}</div>
     <div class="pub-venue">${esc(p.venue)}</div>
   </div>
@@ -185,7 +190,7 @@ function catNavHtml(sections) {
 /* ---------- news / members renderers ---------- */
 function newsItemHtml(n) {
   const d = n.highlight ? ' newsHighlightDate' : '', t = n.highlight ? ' newsHighlightTitle' : '';
-  return `<div><div class="newsDate${d}">${n.date}</div><div class="newsTitle${t}">${n.html}</div></div>`;
+  return `<div><div class="newsDate${d}">${n.date}</div><div class="newsTitle${t}">${n.html}${tierBadge(n.tier)}</div></div>`;
 }
 function memberListHtml(list) {
   if (!list || !list.length) return '<li>(Recruiting &mdash; positions open.)</li>';

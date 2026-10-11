@@ -1,4 +1,5 @@
 {
+  "_comment": "[tier] 항목에 'tier': 'premier'(파랑, Premier Conference) 또는 'top'(노랑, Top-tier Conference)을 넣으면 제목 옆에 우수학술대회 배지가 표시됩니다(뉴스·논문 공통, 없으면 표시 안 함). 예: { \"id\": \"ic-01\", ..., \"tier\": \"premier\" }. 수정 후 node tools/build.js",
   "groups": [
     { "key": "intl-journal", "title": "International Journal (SCIE)" },
     { "key": "intl-conf", "title": "International Conference" },

@@ -332,3 +332,12 @@ body.dark .project-row::-webkit-scrollbar-thumb { background: rgba(91,155,213,.4
   body:not(.dark) #navbar-main .navbar-collapse .nav-link:hover i,
   body:not(.dark) #navbar-main .navbar-collapse .nav-link.active i { color: var(--v-primary-dark) !important; }
 }
+
+
+/* conference-tier badges (news + publications): tier "premier" = blue, "top" = gold */
+.tier-badge { display: inline-flex; align-items: center; gap: .25rem; font-size: .7rem; font-weight: 700; line-height: 1; padding: .2rem .5rem; border-radius: 999px; vertical-align: middle; white-space: nowrap; margin-left: .35rem; }
+.tier-premier { background: #004e96; color: #fff; }
+.tier-top { background: #fff4dc; color: #8a5a00; border: 1px solid #f5a623; }
+.tier-top .tier-star { color: #f5a623; }
+body.dark .tier-premier { background: #5b9bd5; color: #0c2440; }
+body.dark .tier-top { background: rgba(245,166,35,.16); color: #f7c873; }
